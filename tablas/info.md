@@ -1,0 +1,1 @@
+## Esta carperta se debe versionar porque en ella se crean los archivos con los resultados.

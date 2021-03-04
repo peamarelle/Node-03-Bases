@@ -1,20 +1,24 @@
 let fs = require('fs');
 let {logica} = require('./logica');
+let colors = require('colors');
 
-const multiplicar = (base) => {
-    console.log('==================')
-    console.log('Tabla del ${base}');
-    console.log('==================')
+const multiplicar = (base, limite, visualizar) => {
+    
+    let resultado = logica(base, limite);
+    
+    if(visualizar) {
+        console.log('=================='.green)
+        console.log(`Tabla del ${base}`);
+        console.log('=================='.green)
+        console.log(resultado);
+    }
+    const nombreArchivo = `tablas/tabla-del-${base}.txt`;
 
-    let resultado = logica(base);
-
-    console.log(resultado);
-    const nombreArchivo = `tablas/tabla-de-${base}`;
     fs.writeFile(nombreArchivo, resultado, (err) => {
         if(err) {
             throw error;
         }
-        console.log(`El archivo ${nombreArchivo} fue creado!`);
+        console.log(`El archivo ${nombreArchivo} fue creado!`.rainbow);
     });
 }
 
